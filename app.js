@@ -14,13 +14,18 @@ console.log('Command: ', command);
 
 
 if (command === 'add'){
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
     //console.log('Adding new note');
+    if (note){
+        console.log('The note is added successfully.')
+    } else {
+        console.log('Failed to save the note.')
+    }
 
 } else if (command === 'list'){
     notes.getAll();
     //console.log("Listing all notes");
-    
+
 } else if (command === 'read') {
     console.log("Reading notes");
 } else if (command === 'remove'){
