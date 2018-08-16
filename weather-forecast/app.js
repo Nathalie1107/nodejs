@@ -2,6 +2,7 @@ const yargs = require('yargs');
 
 const geocode = require('./geocode/geocode.js');
 // 1301 lombard street
+const temperature = require('./geocode/temperature');
 
 let address = '1301 lombard street';
 
@@ -23,6 +24,13 @@ geocode.geocodeAddress(args.address, (errorMessage, results) => {
         console.log(errorMessage)
     } else {
         console.log(JSON.stringify(results, undefined, 2));
+        temperature.temperature(results, (error2, tempResult) =>{
+            if(error2){
+                console.log(error2);
+            } else {
+                console.log(JSON.stringify(tempResult, undefined, 2));
+            }
+        })
     }
 });
 
